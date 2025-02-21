@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loucuras?</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        #conteudo {
+            background: #000000;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 10px;
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            color: white; 
+        }
+
+        .btn {
+            background: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 10px;
+            width: 80px;
+            border-radius: 5px;
+            font-weight: bold; 
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            opacity: 0.7;
+            animation: floatUp 5s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(0.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="conteudo">
+        <h1>Vc sapatearia igual o John Leivas pra mim?</h1>
+        <img src="https://i.ibb.co/Q7mfZqkp/apaixonado.png" alt="apaixonado" width="300" style="margin-top: 70px;">
+        <div style="margin: auto;width: 170px;">
+            <button style="position: fixed;display: block;" class="btn" onclick="sim()">Claro,pq não?</button>
+            <button class="btn" onclick="desvia(this)" onmouseover="desvia(this)" style="position: absolute;">NÃO,      JAMAIS!</button>
+        </div>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤";
+            heart.classList.add("heart");
+            document.body.appendChild(heart);
+
+            const size = Math.random() * 40 + 20 + "px";  
+            heart.style.fontSize = size;
+
+            heart.style.left = Math.random() * 100 + "vw";
+
+            heart.style.opacity = Math.random() * 0.5 + 0.5;
+
+            heart.style.animationDuration = Math.random() * 5 + 3 + "s";
+
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        setInterval(createHeart, 200);
+
+        function sim() {
+            alert("OPA, vc aceitou sapatear pra mim!!!! :)");
+            location.href = "https://vm.tiktok.com/ZMkcx4BQj/";
+        }
+
+        function desvia(btn) {
+            btn.style.position = 'absolute';
+            btn.style.bottom = geraPosicao(10, 90);
+            btn.style.left = geraPosicao(10, 90);
+            console.log('opa, desviei...');
+        }
+
+        function geraPosicao(min, max) {
+            return (Math.random() * (max - min) + min) + "%";
+        }
+    </script>
+</body>
+
+</html>
+
